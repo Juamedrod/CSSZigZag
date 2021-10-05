@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cuadrado {
+            background-color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        const numerosCuadrados = parseInt(prompt('Introduce un numero de cuadrados'));
+        const ancho = parseInt(prompt('Introduce el ancho'));
+        const treshold = parseInt(prompt('Introduce cada cuantos cuadrados quieres el escalon'));
+        let der = true;
+        let centinela = 0;
+        let firstTimeThisLoop = true;
+
+        if (!isNaN(numerosCuadrados)) {
+
+            for (let i = 1; i <= numerosCuadrados; i++) {
+
+                if (firstTimeThisLoop) {
+                    firstTimeThisLoop = false;
+                } else if (der) {
+                    centinela++;
+                    if (centinela == treshold) {
+                        centinela = treshold - 2;
+                        der = false;
+                    }
+                } else {
+                    centinela--;
+                    if (centinela == 0) {
+                        der = true;
+                    }
+                }
+
+                document.write('<div class="cuadrado"  style="margin-left: ' + (centinela * ancho) + 'px; height:' + ancho + 'px; width: ' + ancho + 'px;">' + i + '</div>');
+            }
+
+        } else {
+            alert('Introduce numeros naturales');
+        }
+    </script>
+</body>
+
+</html>
